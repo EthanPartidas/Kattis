@@ -113,8 +113,6 @@ int main()
             }
         }
         if(!won)cout<<"IMPOSSIBLE"<<endl;
-
     }
-
     return 0;
 }
