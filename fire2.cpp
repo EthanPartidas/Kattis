@@ -7,36 +7,36 @@ using namespace std;
 
 void step(string* room, int a, int b, vector<pair<int, int>>& fire)
 {
-    vector<pair<int, int>> next;
-    for(pair<int, int> sclel:fire)
+    vector<pair<int, int>> activeFire;
+    for(pair<int, int> flame:fire)
     {
-        int x = get<0>(sclel);
-        int y = get<1>(sclel);
+        int x = get<0>(flame);
+        int y = get<1>(flame);
         if(x-1>=0&&room[x-1][y]=='.')
         {
             room[x-1][y] = '*';
-            next.push_back(make_pair(x-1, y));
+            activeFire.push_back(make_pair(x-1, y));
         }
         if(x+1<a&&room[x+1][y]=='.')
         {
             room[x+1][y] = '*';
-            next.push_back(make_pair(x+1, y));
+            activeFire.push_back(make_pair(x+1, y));
         }
         if(y-1>=0&&room[x][y-1]=='.')
         {
             room[x][y-1] = '*';
-            next.push_back(make_pair(x, y-1));
+            activeFire.push_back(make_pair(x, y-1));
         }
         if(y+1<b&&room[x][y+1]=='.')
         {
             room[x][y+1] = '*';
-            next.push_back(make_pair(x, y+1));
+            activeFire.push_back(make_pair(x, y+1));
         }
     }
     fire.clear();
-    for(pair<int, int> sclel:next)
+    for(pair<int, int> activeFlame:activeFire)
     {
-        fire.push_back(sclel);
+        fire.push_back(activeFlame);
     }
 }
 
